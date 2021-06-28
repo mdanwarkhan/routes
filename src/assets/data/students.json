@@ -1,0 +1,40 @@
+[
+    {
+        "name": "Mark",
+        "class": 6,
+        "section": "C",
+        "subjects": [
+            {
+                "name": "Maths",
+                "marks": 57
+            },
+            {
+                "name": "Science",
+                "marks": 80
+            },
+            {
+                "name": "English",
+                "marks": 72
+            }
+        ]
+    },
+    {
+        "name": "John",
+        "class": 6,
+        "section": "A",
+        "subjects": [
+            {
+                "name": "Maths",
+                "marks": 42
+            },
+            {
+                "name": "Science",
+                "marks": 78
+            },
+            {
+                "name": "English",
+                "marks": 50
+            }
+        ]
+    }
+]

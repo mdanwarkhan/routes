@@ -1,0 +1,59 @@
+<div class="header-container">
+    <div class="btn-container" [hidden]="error">
+        <button class="btn" title="Switch to grid view" (click)="gridView(true)"><i class="fa fa-th-large"></i></button>
+        <button class="btn" title="Switch to list view" (click)="gridView(false)"><i class="fa fa-bars"></i></button>
+    </div>
+    <div class="dropdown" [hidden]="error">
+        <form [formGroup]="myForm" class="select">
+            <select formControlName="filterProduct" [compareWith]="compareFn">
+                <option [ngValue]="null" disabled>Choose your profile</option>
+                <option *ngFor="let k of PriceFilter; let i = index;" [ngValue]="getValue(i)">
+                    {{ getValue(i).displayText }}
+                </option>
+            </select>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <ng-container *ngIf="!isLoading; else isLoadingBlock">
+        <div *ngFor="let product of filteredProducts" [ngClass]="grid ? 'col-grid' : 'col-list'">
+            <div class="card">
+                <img src="{{product.image}}" alt="Denim Jeans">
+                <h2>{{product.title.slice(0,20)}}</h2>
+                <p class="price">${{product.price}}</p>
+                <p class="product-desc">{{product.description.slice(0,100)}}</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- <cdk-virtual-scroll-viewport  style="height: 500px" itemSize="90" >
+                <ng-container *cdkVirtualFor="let product of filteredProducts">
+                    <div class="card">
+                        <img src="{{product.image}}" alt="Denim Jeans">
+                        <h2>{{product.title.slice(0,20)}}</h2>
+                        <p class="price">${{product.price}}</p>
+                        <p class="product-desc">{{product.description.slice(0,100)}}</p>
+                        <button>Add to Cart</button>
+                    </div>
+                </ng-container>
+            </cdk-virtual-scroll-viewport> -->
+    </ng-container>
+    <ng-template #isLoadingBlock>
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </ng-template>
+
+    <div *ngIf="error" class="error">
+        <h1>An error occured</h1>
+        <p>{{error}}</p>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="container">
+  <app-countdown-output 
+    [timerUpdate]="onTimerUpdate"></app-countdown-output>
+  <app-countdown-input
+    (timer)="onTimerUpdate = $event"
+    (startClickCount)="startClickCount = $event"
+    (pauseClickCount)="pauseClickCount = $event"
+    (startPauseClickTimerLogs)="startPauseClickTimerLogs = $event">
+</app-countdown-input>
+  <app-countdown-timelog [startPauseClickTimerLogs]="startPauseClickTimerLogs"></app-countdown-timelog>
+  <app-countdown-click
+    [startClickCount]="startClickCount"
+    [pauseClickCount]="pauseClickCount">
+</app-countdown-click>
+</div>

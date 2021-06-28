@@ -1,0 +1,15 @@
+#child-div {
+    height: 200px;
+    width: 200px;
+    background-color: #007bff;
+    border: 1px solid lightgray;
+    position: relative;
+}
+
+#child-btn{
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
