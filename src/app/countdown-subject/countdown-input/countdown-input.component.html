@@ -1,0 +1,34 @@
+<div class="container">
+  <div>
+    <div class="lebel-input-container">
+      <label for="timer">Enter Timer Limit</label>
+      <input
+        type="number"
+        id="timer"
+        name="timer"
+        numbersOnly
+        [(ngModel)]="timerInput"
+        [disabled]="disableTimerInput"
+      />
+    </div>
+
+    <div class="button-container">
+      <button
+        type="button"
+        [ngClass]="timerInput == null ? 'button-disabled' : 'button-start'"
+        (click)="toggleTimer()"
+        [disabled]="timerInput == null"
+      >
+        {{ timerStatus }}
+      </button>
+      <button
+        type="button"
+        [ngClass]="timerInput == null ? 'button-disabled' : 'button-reset'"
+        (click)="resetTimer()"
+        [disabled]="timerInput == null"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+</div>

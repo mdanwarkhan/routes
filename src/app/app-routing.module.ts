@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: 'divs', loadChildren: () => import('./dynamic-divs/dynamic-divs.module').then(m => m.DynamicDivsModule)},
   { path: 'countdown-decorators', loadChildren: () => import('./countdown-decorators/countdown-decorators.module').then(m => m.CountdownDecoratorsModule)},
+  { path: 'countdown-subject', loadChildren: () => import('./countdown-subject/countdown-subject.module').then(m => m.CountdownSubjectModule)},
   { path: 'list-grid', loadChildren: () => import('./grid-list/grid-list.module').then(m => m.GridListModule)},
   { path: 'students-table', loadChildren: () => import('./students-table/students-table.module').then(m => m.StudentsTableModule)},
   { path: "**", component: PageNotFoundComponent }

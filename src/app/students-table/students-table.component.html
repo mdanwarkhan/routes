@@ -1,15 +1,17 @@
 <table class="content-table">
   <thead>
     <tr>
-      <th *ngFor="let header of headers" (click)="sortBy(header)">{{header}}</th>
+      <th *ngFor="let header of headers" (click)="sortBy(header)">
+        {{ header }}
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
-      <td>{{student.name}}</td>
-      <td>{{student.class}}</td>
-      <td>{{student.section}}</td>
-      <td *ngFor="let subject of student.subjects">{{subject.marks}}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.class }}</td>
+      <td>{{ student.section }}</td>
+      <td *ngFor="let subject of student.subjects">{{ subject.marks }}</td>
     </tr>
   </tbody>
 </table>

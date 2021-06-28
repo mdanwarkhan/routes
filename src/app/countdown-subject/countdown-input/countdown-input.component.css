@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+}
+
+.container .lebel-input-container {
+    display: inline-block;
+}
+
+.container input {
+    margin-left: 20px;
+    height: 30px;
+}
+.container .button-container {
+    width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container .button-container button{
+    width: 70px;
+    padding: 5px;
+    margin: 0 10px;
+    text-transform: uppercase;
+    border-radius: 4px;
+} 
+
+.container .button-container .button-start{
+    background: #007bff;    
+    color: black;
+    border: 1px solid #007bff;
+}
+
+.container .button-container .button-reset{
+    background: #ff6344;
+    color: black;
+    border: 1px solid #ff6344;
+}
+
+.container .button-container .button-disabled{
+    background: #ccc;
+    color: black;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+}

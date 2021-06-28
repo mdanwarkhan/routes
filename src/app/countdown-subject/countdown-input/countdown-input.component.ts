@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { CountdownSubjectService } from '../countdown-subject.service';
 
 @Component({
   selector: 'app-countdown-input',
@@ -18,18 +19,14 @@ export class CountdownInputComponent implements OnInit {
   start = true;
 
   timerStatus = 'Start'
-  timerTicker: any;
+  timerTicker: number;
 
   startCount = 0;
   pauseCount = 0;
 
   startPauseTimeArr: any[] = []
 
-  @Output() timer = new EventEmitter<number>();
-  @Output() startClickCount = new EventEmitter<number>()
-  @Output() pauseClickCount = new EventEmitter<number>()
-  @Output() startPauseClickTimerLogs = new EventEmitter<any>()
-  constructor() { }
+  constructor(private countdownSubjectService: CountdownSubjectService) { }
 
   ngOnInit(): void {
     // this.timerIinput.nativeElement.value == '' ? true : false
@@ -46,9 +43,9 @@ export class CountdownInputComponent implements OnInit {
         this.endTime = now + countDownTime;
         this.setCountDown(this.endTime);
         this.startPauseTimeArr.push({ 'started': new Date() })
-        this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
-        this.startCount++
-        this.startClickCount.emit(this.startCount)
+        this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr)
+        this.startCount++;
+        this.countdownSubjectService.sendStartClickCount(this.startCount)
       }
     }
 
@@ -58,19 +55,19 @@ export class CountdownInputComponent implements OnInit {
 
       clearInterval(this.countDownInterval);
       this.startPauseTimeArr.push({ 'paused': new Date() })
-      this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
+      this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr)
       this.pauseCount++
-      this.pauseClickCount.emit(this.pauseCount)
+      this.countdownSubjectService.sendPauseClickCount(this.pauseCount)
     } else if (!this.stopBtnClicked) {
       if (this.start) {
-        this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
+        this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr)
         // this.startPauseTimeArr.push({'started': 'skip'})
         this.start = false;
       } else {
         this.startPauseTimeArr.push({ 'started': new Date() })
-        this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
+        this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr)
         this.startCount++
-        this.startClickCount.emit(this.startCount)
+        this.countdownSubjectService.sendStartClickCount(this.startCount)
       }
 
       this.timerStatus = "Stop"
@@ -91,7 +88,7 @@ export class CountdownInputComponent implements OnInit {
     }
 
     this.timerTicker = secondsLeft;
-    this.timer.emit(this.timerTicker)
+    this.countdownSubjectService.sendTimerTicker(this.timerTicker)
 
   };
 
@@ -105,10 +102,10 @@ export class CountdownInputComponent implements OnInit {
     clearInterval(this.countDownInterval);
     this.timerInput = null;
     this.stopBtnClicked = true;
-    this.timer.emit(this.timerTicker = 0)
-    this.startPauseClickTimerLogs.emit(this.startPauseTimeArr = [])
-    this.startClickCount.emit(this.startCount = 0)
-    this.pauseClickCount.emit(this.pauseCount = 0)
+    this.countdownSubjectService.sendTimerTicker(this.timerTicker = 0)
+    this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr = [])
+    this.countdownSubjectService.sendStartClickCount(this.startCount = 0)
+    this.countdownSubjectService.sendPauseClickCount(this.pauseCount = 0)
     this.timerStatus = 'Start';
   };
 }

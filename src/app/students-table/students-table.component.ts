@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Sort } from '../util/Sort';
+import { Sort } from '../util/sort';
 import { Student } from './models/student.model';
 import { StudentService } from './services/students-table.service';
 
@@ -18,8 +18,7 @@ export class StudentsTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentsService.getStudents().subscribe((res) => {
-      // this.headers = Object.keys(res[0]);
-      console.log(this.iterate(res[0]))
+      this.headers = this.getHeaders(res[0])
       this.students = res;
       this.clonedStudents = this.students;
     }, error => console.log('error', error))
@@ -27,41 +26,31 @@ export class StudentsTableComponent implements OnInit {
 
   getHeaders(obj: any) {
     let headers = [];
-    // console.log('student', student)
-    for(let prop in obj) {
-       let val = obj[prop]
-       if(typeof val == 'object') {
-         this.getHeaders(val)
-       } else {
-         headers.push(prop)
-       }
+    for (let prop in obj) {
+      let val = obj[prop]
+      if (Array.isArray(val)) {
+        for (let v of val) {
+          headers.push(v.name)
+        }
+      } else {
+        headers.push(prop)
+      }
     }
     return headers;
   }
 
-  iterate(obj: any) {
-    Object.keys(obj).forEach(key => {
-
-    console.log(`key: ${key}, value: ${obj[key]}`)
-
-    if (typeof obj[key] === 'object') {
-            this.iterate(obj[key])
-        }
-    })
-  }
-
   sortBy(headerNm: string) {
     const sort = new Sort();
-    if(this.sortStatus == 'asc') {
-     this.students.sort(sort.startSort(headerNm, 'asc'));
-     this.sortStatus = 'desc'
-    } else if(this.sortStatus == 'desc') {
+    if (this.sortStatus == 'asc') {
+      this.students.sort(sort.startSort(headerNm, 'asc'));
+      this.sortStatus = 'desc'
+    } else if (this.sortStatus == 'desc') {
       this.students.sort(sort.startSort(headerNm, 'desc'));
       this.sortStatus = 'reset'
-    } else if(this.sortStatus == 'reset') {
-     this.students = []
-     this.students = [...this.clonedStudents]
-     this.sortStatus = 'asc'
-   } 
- }
+    } else if (this.sortStatus == 'reset') {
+      this.students = []
+      this.students = [...this.clonedStudents]
+      this.sortStatus = 'asc'
+    }
+  }
 }
