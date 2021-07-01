@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let header of headers" (click)="sortTo(header)">
-        {{ header }}
+        {{ header | titlecase}}
       </th>
     </tr>
   </thead>
@@ -11,7 +11,9 @@
       <td>{{ student.name }}</td>
       <td>{{ student.class }}</td>
       <td>{{ student.section }}</td>
-      <td *ngFor="let subject of student.subjects">{{ subject.marks }}</td>
+      <td>{{ student.maths }}</td>
+      <td>{{ student.science }}</td>
+      <td>{{ student.english }}</td>
     </tr>
   </tbody>
 </table>

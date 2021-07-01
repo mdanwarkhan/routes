@@ -3,7 +3,7 @@
     <nav>
         <ul>
             <li><a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a></li> 
-            <li appDropdown>WordPress
+            <li appDropdown class="dropdown-container">Routes
             <!-- First Tier Drop Down -->
             <ul>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a [routerLink]="['/route-1']" routerLinkActive="router-link-active" >Route 1</a></li>
@@ -11,7 +11,7 @@
                 <li><a [routerLink]="['/route-3']" routerLinkActive="router-link-active" >Route 3</a></li>
                 <li><a [routerLink]="['/route-4']" routerLinkActive="router-link-active" >Route 4</a></li>
                 <li><a [routerLink]="['/route-5']" routerLinkActive="router-link-active" >Route 5</a></li>
-                <li><a [routerLink]="['/route-6']" routerLinkActive="router-link-active" >Route 6</a></li>
+                <li><a [routerLink]="['/route-6']" routerLinkActive="router-link-active">Route 6</a></li>
             </ul>        
             </li>
         </ul>

@@ -3,38 +3,88 @@
         "name": "Mark",
         "class": 6,
         "section": "C",
-        "subjects": [
-            {
-                "name": "Maths",
-                "marks": 57
-            },
-            {
-                "name": "Science",
-                "marks": 80
-            },
-            {
-                "name": "English",
-                "marks": 72
-            }
-        ]
+        "maths": 57,
+        "science": 80,
+        "english": 72
     },
     {
         "name": "John",
         "class": 6,
         "section": "A",
-        "subjects": [
-            {
-                "name": "Maths",
-                "marks": 42
-            },
-            {
-                "name": "Science",
-                "marks": 78
-            },
-            {
-                "name": "English",
-                "marks": 50
-            }
-        ]
+        "maths": 57,
+        "science": 80,
+        "english": 72
+    },
+    {
+        "name": "Arpita",
+        "class": 6,
+        "section": "D",
+        "maths": 88,
+        "science": 60,
+        "english": 52
+    },
+    {
+        "name": "Aishwarya",
+        "class": 6,
+        "section": "C",
+        "maths": 33,
+        "science": 45,
+        "english": 98
+    },
+    {
+        "name": "Kunal",
+        "class": 6,
+        "section": "C",
+        "maths": 17,
+        "science": 20,
+        "english": 62
+    },
+    {
+        "name": "Gaurav",
+        "class": 6,
+        "section": "C",
+        "maths": 23,
+        "science": 50,
+        "english": 62
+    },
+    {
+        "name": "Sonali",
+        "class": 6,
+        "section": "B",
+        "maths": 76,
+        "science": 40,
+        "english": 82
+    },
+    {
+        "name": "Deepali",
+        "class": 6,
+        "section": "C",
+        "maths": 56,
+        "science": 89,
+        "english": 56
+    },
+    {
+        "name": "Gunjan",
+        "class": 6,
+        "section": "B",
+        "maths": 84,
+        "science": 40,
+        "english": 92
+    },
+    {
+        "name": "Abu",
+        "class": 6,
+        "section": "E",
+        "maths": 45,
+        "science": 56,
+        "english": 67
+    },
+    {
+        "name": "Deepak",
+        "class": 6,
+        "section": "E",
+        "maths": 57,
+        "science": 58,
+        "english": 59
     }
 ]

@@ -1,7 +1,7 @@
 #child-div {
     height: 200px;
     width: 200px;
-    background-color: #007bff;
+    background-color: #59981A;
     border: 1px solid lightgray;
     position: relative;
 }
@@ -11,5 +11,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    background: #D1E2C4;
     transform: translate(-50%, -50%);
 }

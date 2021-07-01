@@ -12,14 +12,14 @@
 
 .banner.b-body{
   height: 100%;
-  background: #007bff;
+  background: #59981A;
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
 .banner h1 {
-  color: #fff;
+  color: #EBEBE8;
   font-size: 2rem;
   padding: 1rem;
   margin: 0;

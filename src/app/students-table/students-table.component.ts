@@ -18,25 +18,10 @@ export class StudentsTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentsService.getStudents().subscribe((res) => {
-      this.headers = this.getHeaders(res[0])
+      this.headers = Object.keys(res[0])
       this.students = res;
-      this.clonedStudents = this.students;
+      this.clonedStudents = this.students.slice();
     }, error => console.log('error', error))
-  }
-
-  getHeaders(obj: any) {
-    let headers = [];
-    for (let prop in obj) {
-      let val = obj[prop]
-      if (Array.isArray(val)) {
-        for (let v of val) {
-          headers.push(v.name)
-        }
-      } else {
-        headers.push(prop)
-      }
-    }
-    return headers;
   }
 
   sortTo(headerNm: string) {

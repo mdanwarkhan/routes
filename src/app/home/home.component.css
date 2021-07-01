@@ -1,0 +1,22 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #59981A;
+  font-weight: bolder;
+  font-size: 20vh;
+  opacity: 0.8;
+}
+.loader span {
+  display: inline-block;
+  animation: pulse 0.3s alternate infinite ease-in;
+}
+.loader span:nth-child(odd) {
+  animation-delay: 0.7s;
+}
+@keyframes pulse {
+  to {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+}

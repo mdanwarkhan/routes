@@ -29,5 +29,4 @@ export class RotatingBannerComponent implements AfterViewInit {
       }, 0);
     }
   }
-
 }

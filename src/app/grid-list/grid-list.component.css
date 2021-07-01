@@ -13,22 +13,21 @@
       width: 40px;
       height: 40px;
       margin-right: 10px;
-      background: #007bff;
+      background: #59981A;
       color: #fff;
-      border: 1px solid #007bff
+      border: 1px solid #59981A
     }
     
     .btn-container .btn:hover {
-      color: #007bff;
+      color: #59981A;
       background: #fff;
     }
     /* Select start */
     select {
-      background: #007bff;
+      background: #59981A;
       flex: 1;
       padding: 10px 10px;
       font-size: 18px;
-      font-weight: bold;
       color: #fff;
       cursor: pointer;
       outline: 0;
@@ -42,8 +41,8 @@
       display: flex;
       width: 250px;
       line-height: 3;
-      background: #007bff;
-      border-radius:1px solid #007bff;
+      background: #59981A;
+      border-radius:1px solid #59981A;
       overflow: hidden;
     }
     /* Arrow */
@@ -53,7 +52,7 @@
       top: -3px;
       right: 0;
       padding: 0 1em;
-      background: #007bff;
+      background: #59981A;
       color: #fff;
       cursor: pointer;
       pointer-events: none;
@@ -92,6 +91,7 @@
     }
 
     .row .col-grid .card {
+      background: #EBEBE8;
       text-align: center;
       font-family: arial;
       padding: 10px;
@@ -114,6 +114,7 @@
     }
 
     .row .col-grid .card h2 {
+      color: #31352E;
       padding-top: 15px;
     }
 
@@ -123,7 +124,7 @@
     }
 
     .row .col-grid .price {
-      color: grey;
+      color: #31352E;
       font-size: 22px;
       margin: 10px 0;
     }
@@ -132,8 +133,8 @@
       outline: 0;
       padding: 12px;
       color: white;
-      background-color: #007bff;
-      border: 1px solid #007bff;
+      background-color: #59981A;
+      border: 1px solid #59981A;
       border-radius: 5px;
       text-align: center;
       cursor: pointer;
@@ -150,6 +151,7 @@
       }  
       
     .row .col-list .card {
+        background: #EBEBE8;
         display: flex;
         position: relative;
         height: 400px;
@@ -169,7 +171,7 @@
   
       .row .col-list .card h2 {
         position: absolute;
-        /* right: 86%; */
+        color: #31352E;
         left: 50%;
         top: 45%;
       }
@@ -181,8 +183,11 @@
       }
   
       .row .col-list .price {
-        color: grey;
-        font-size: 22px;
+        color: #31352E;
+        position: absolute;
+        right: 25%;
+        top: 20%;
+        font-size: 30px;
         margin: 10px 0;
       }
   
@@ -190,8 +195,8 @@
         outline: 0;
         padding: 12px;
         color: white;
-        background-color: #007bff;
-        border: 1px solid #007bff;
+        background-color: #59981A;
+        border: 1px solid #59981A;
         border-radius: 5px;
         text-align: center;
         cursor: pointer;
@@ -209,6 +214,7 @@
       height: 80px;
       left: 50%;
       top: 50%;
+      transform: translate(-50%,50%);
     }
 
     .lds-spinner div {
@@ -225,7 +231,7 @@
       width: 6px;
       height: 18px;
       border-radius: 20%;
-      background: #007bff;
+      background: #59981A;
     }
 
     .lds-spinner div:nth-child(1) {
