@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { DropdownDirective } from './directives/dropdown.directive';
 import { NumbersOnlyInputDirective } from './directives/numbers-only.directive';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   imports: [
@@ -14,13 +15,15 @@ import { NumbersOnlyInputDirective } from './directives/numbers-only.directive';
   ],
   declarations: [
     DropdownDirective,
-    NumbersOnlyInputDirective
+    NumbersOnlyInputDirective,
+    TruncatePipe
   ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     DropdownDirective,
     NumbersOnlyInputDirective,
+    TruncatePipe,
     HttpClientModule,
     FormsModule
   ]

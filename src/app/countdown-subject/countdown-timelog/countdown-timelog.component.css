@@ -2,6 +2,6 @@ ul {
    list-style: none;
 }
 
-h3 {
-    
+h3,ul {
+   padding: 10px 0 0 20px;
 }

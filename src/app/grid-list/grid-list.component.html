@@ -19,24 +19,12 @@
         <div *ngFor="let product of filteredProducts" [ngClass]="grid ? 'col-grid' : 'col-list'">
             <div class="card">
                 <img src="{{product.image}}" alt="Denim Jeans">
-                <h2>{{product.title.slice(0,20)}}</h2>
+                <h2>{{product.title | truncate: 10}}</h2>
                 <p class="price">${{product.price}}</p>
-                <p class="product-desc">{{product.description.slice(0,100)}}</p>
+                <p class="product-desc">{{product.description | truncate: 60}}</p>
                 <button>Add to Cart</button>
             </div>
         </div>
-
-        <!-- <cdk-virtual-scroll-viewport  style="height: 500px" itemSize="90" >
-                <ng-container *cdkVirtualFor="let product of filteredProducts">
-                    <div class="card">
-                        <img src="{{product.image}}" alt="Denim Jeans">
-                        <h2>{{product.title.slice(0,20)}}</h2>
-                        <p class="price">${{product.price}}</p>
-                        <p class="product-desc">{{product.description.slice(0,100)}}</p>
-                        <button>Add to Cart</button>
-                    </div>
-                </ng-container>
-            </cdk-virtual-scroll-viewport> -->
     </ng-container>
     <ng-template #isLoadingBlock>
         <div class="lds-spinner">
