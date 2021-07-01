@@ -13,7 +13,7 @@ export class StudentsTableComponent implements OnInit {
   students: Student[];
   clonedStudents: Student[];
   headers: string[];
-  sortStatus = 'asc';
+  sortOrder = 'asc';
   constructor(private studentsService: StudentService) { }
 
   ngOnInit(): void {
@@ -39,18 +39,18 @@ export class StudentsTableComponent implements OnInit {
     return headers;
   }
 
-  sortBy(headerNm: string) {
+  sortTo(headerNm: string) {
     const sort = new Sort();
-    if (this.sortStatus == 'asc') {
+    if (this.sortOrder == 'asc') {
       this.students.sort(sort.startSort(headerNm, 'asc'));
-      this.sortStatus = 'desc'
-    } else if (this.sortStatus == 'desc') {
+      this.sortOrder = 'desc'
+    } else if (this.sortOrder == 'desc') {
       this.students.sort(sort.startSort(headerNm, 'desc'));
-      this.sortStatus = 'reset'
-    } else if (this.sortStatus == 'reset') {
+      this.sortOrder = 'reset'
+    } else if (this.sortOrder == 'reset') {
       this.students = []
       this.students = [...this.clonedStudents]
-      this.sortStatus = 'asc'
+      this.sortOrder = 'asc'
     }
   }
 }

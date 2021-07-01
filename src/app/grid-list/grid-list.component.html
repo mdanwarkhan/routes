@@ -4,11 +4,11 @@
         <button class="btn" title="Switch to list view" (click)="gridView(false)"><i class="fa fa-bars"></i></button>
     </div>
     <div class="dropdown" [hidden]="error">
-        <form [formGroup]="myForm" class="select">
-            <select formControlName="filterProduct" [compareWith]="compareFn">
-                <option [ngValue]="null" disabled>Choose your profile</option>
-                <option *ngFor="let k of PriceFilter; let i = index;" [ngValue]="getValue(i)">
-                    {{ getValue(i).displayText }}
+        <form [formGroup]="productForm" class="select">
+            <select formControlName="filterProduct">
+                <option [ngValue]="null" disabled>Select range</option>
+                <option *ngFor="let filter of priceFilter" [ngValue]="filter.order">
+                    {{ filter.displayText }}
                 </option>
             </select>
         </form>

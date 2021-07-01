@@ -61,6 +61,7 @@ export class CountdownInputComponent implements OnInit {
       this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
       this.pauseCount++
       this.pauseClickCount.emit(this.pauseCount)
+      console.log('test', this.countDownInterval)
     } else if (!this.stopBtnClicked) {
       if (this.start) {
         this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
@@ -92,7 +93,6 @@ export class CountdownInputComponent implements OnInit {
 
     this.timerTicker = secondsLeft;
     this.timer.emit(this.timerTicker)
-
   };
 
   resetTimer() {
