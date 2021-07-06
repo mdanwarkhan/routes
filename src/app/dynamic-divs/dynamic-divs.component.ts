@@ -5,23 +5,23 @@ import { Component, HostListener, OnInit, Renderer2, ElementRef, ViewChild, Afte
   templateUrl: './dynamic-divs.component.html',
   styleUrls: ['./dynamic-divs.component.css']
 })
-export class DynamicDivsComponent implements OnInit  {
+export class DynamicDivsComponent implements AfterViewInit {
 
   currentDivNo = 0;
-  @ViewChild('myDiv') myDiv: ElementRef;  
+  parentDiv: HTMLDivElement;
+  @ViewChild('parentDiv') pDiv: ElementRef; 
 
   constructor(private renderer: Renderer2) { }
 
   @HostListener('window:scroll') onScroll(e: Event): void {
     if(document.documentElement.scrollHeight == (window.innerHeight + Math.ceil(window.pageYOffset))) {
-      console.log('document.documentElement.scrollHeight',document.documentElement.scrollHeight)
-      console.log('window.innerHeight + Math.ceil(window.pageYOffset', window.innerHeight + Math.ceil(window.pageYOffset))
       this.currentDivNo++;
       this.createChildDiv(this.currentDivNo);
     }
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
+    this.parentDiv = this.pDiv.nativeElement;
     for(let i = 1; i< 5; i++) {
       this.currentDivNo = i
       this.createChildDiv(this.currentDivNo)
@@ -29,7 +29,6 @@ export class DynamicDivsComponent implements OnInit  {
   }
 
   createChildDiv(currentIndex: number) {
-    const div = document.getElementById('parentDiv')
     const childDiv = this.renderer.createElement('div');
     this.renderer.setProperty(childDiv, 'id', 'child-div');
 
@@ -43,6 +42,6 @@ export class DynamicDivsComponent implements OnInit  {
 
     this.renderer.appendChild(btn, text);
     this.renderer.appendChild(childDiv, btn);
-    this.renderer.appendChild(div, childDiv);
+    this.renderer.appendChild(this.parentDiv, childDiv);
   }
 }

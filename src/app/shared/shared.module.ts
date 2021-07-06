@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { DropdownDirective } from './directives/dropdown.directive';
 import { NumbersOnlyInputDirective } from './directives/numbers-only.directive';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
   declarations: [
     DropdownDirective,
     NumbersOnlyInputDirective,
-    TruncatePipe
+    TruncatePipe,
+    ErrorComponent
   ],
   exports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     DropdownDirective,
     NumbersOnlyInputDirective,
     TruncatePipe,
+    ErrorComponent,
     HttpClientModule,
     FormsModule
   ]

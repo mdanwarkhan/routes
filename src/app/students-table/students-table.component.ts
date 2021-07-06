@@ -14,6 +14,7 @@ export class StudentsTableComponent implements OnInit {
   clonedStudents: Student[];
   headers: string[];
   sortOrder = 'asc';
+  error = null;
   constructor(private studentsService: StudentService) { }
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class StudentsTableComponent implements OnInit {
       this.headers = Object.keys(res[0])
       this.students = res;
       this.clonedStudents = this.students.slice();
-    }, error => console.log('error', error))
+    }, error => this.error = error)
   }
 
   sortTo(headerNm: string) {

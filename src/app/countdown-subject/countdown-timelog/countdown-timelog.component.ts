@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TimeLogger } from 'src/app/shared/models/time-logger.model';
 import { CountdownSubjectService } from '../countdown-subject.service';
 
 @Component({

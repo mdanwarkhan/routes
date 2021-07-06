@@ -16,7 +16,7 @@
 </div>
 <div class="row">
     <ng-container *ngIf="!isLoading; else isLoadingBlock">
-        <div *ngFor="let product of filteredProducts" [ngClass]="grid ? 'col-grid' : 'col-list'">
+        <div *ngFor="let product of products" [ngClass]="grid ? 'col-grid' : 'col-list'">
             <div class="card">
                 <img src="{{product.image}}" alt="Denim Jeans">
                 <h2>{{product.title | truncate: 10}}</h2>
@@ -40,8 +40,5 @@
         </div>
     </ng-template>
 
-    <div *ngIf="error" class="error">
-        <h1>An error occured</h1>
-        <p>{{error}}</p>
-    </div>
+    <app-error *ngIf="error" [error]="error"></app-error>
 </div>

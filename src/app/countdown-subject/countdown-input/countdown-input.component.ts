@@ -1,6 +1,5 @@
-import { EventEmitter } from '@angular/core';
-import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { TimeLogger } from 'src/app/shared/models/time-logger.model';
 import { CountdownSubjectService } from '../countdown-subject.service';
 
 @Component({
@@ -8,11 +7,11 @@ import { CountdownSubjectService } from '../countdown-subject.service';
   templateUrl: './countdown-input.component.html',
   styleUrls: ['./countdown-input.component.css']
 })
-export class CountdownInputComponent implements OnInit {
+export class CountdownInputComponent {
 
-  timerInput: any;
+  timerInput: number;
   disableTimerInput = false;
-  countDownInterval: any;
+  countDownInterval: ReturnType<typeof setTimeout>;
   secondsLeftms: number;
   endTime: number;
   stopBtnClicked = true;
@@ -24,13 +23,9 @@ export class CountdownInputComponent implements OnInit {
   startCount = 0;
   pauseCount = 0;
 
-  startPauseTimeArr: any[] = []
+  startPauseTimeArr: TimeLogger[] = []
 
   constructor(private countdownSubjectService: CountdownSubjectService) { }
-
-  ngOnInit(): void {
-    // this.timerIinput.nativeElement.value == '' ? true : false
-  }
 
   toggleTimer() {
     this.disableTimerInput = true;
@@ -100,7 +95,7 @@ export class CountdownInputComponent implements OnInit {
     this.disableTimerInput = false;
     this.start = true
     clearInterval(this.countDownInterval);
-    this.timerInput = null;
+    this.timerInput = 0;
     this.stopBtnClicked = true;
     this.countdownSubjectService.sendTimerTicker(this.timerTicker = 0)
     this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr = [])

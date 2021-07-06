@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { TimeLogger } from 'src/app/shared/models/time-logger.model';
 
 @Component({
   selector: 'app-countdown-input',
@@ -9,26 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountdownInputComponent implements OnInit {
 
-  timerInput: any;
+  timerInput: number;
   disableTimerInput = false;
-  countDownInterval: any;
+  countDownInterval: ReturnType<typeof setTimeout>;
   secondsLeftms: number;
   endTime: number;
   stopBtnClicked = true;
   start = true;
 
   timerStatus = 'Start'
-  timerTicker: any;
+  timerTicker: number;
 
   startCount = 0;
   pauseCount = 0;
 
-  startPauseTimeArr: any[] = []
+  startPauseTimeArr: TimeLogger[] = []
 
   @Output() timer = new EventEmitter<number>();
   @Output() startClickCount = new EventEmitter<number>()
   @Output() pauseClickCount = new EventEmitter<number>()
-  @Output() startPauseClickTimerLogs = new EventEmitter<any>()
+  @Output() startPauseClickTimerLogs = new EventEmitter<TimeLogger[]>()
   constructor() { }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class CountdownInputComponent implements OnInit {
   toggleTimer() {
     this.disableTimerInput = true;
     if (this.start) {
-      let countDownTime = this.timerInput;
+      let countDownTime: number = this.timerInput;
       if (countDownTime > 0) {
 
         countDownTime = countDownTime * 1000;
@@ -61,7 +62,6 @@ export class CountdownInputComponent implements OnInit {
       this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
       this.pauseCount++
       this.pauseClickCount.emit(this.pauseCount)
-      console.log('test', this.countDownInterval)
     } else if (!this.stopBtnClicked) {
       if (this.start) {
         this.startPauseClickTimerLogs.emit(this.startPauseTimeArr)
@@ -103,7 +103,7 @@ export class CountdownInputComponent implements OnInit {
     this.disableTimerInput = false;
     this.start = true
     clearInterval(this.countDownInterval);
-    this.timerInput = null;
+    this.timerInput = 0;
     this.stopBtnClicked = true;
     this.timer.emit(this.timerTicker = 0)
     this.startPauseClickTimerLogs.emit(this.startPauseTimeArr = [])

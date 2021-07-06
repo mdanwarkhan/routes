@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { PRICE_FILTER } from '../constants/product-constants';
 import { Sort } from '../util/sort';
+import { Product } from './models/product.model';
 import { ProductService } from './services/grid-list.service';
 
 @Component({
@@ -11,20 +13,11 @@ import { ProductService } from './services/grid-list.service';
 export class GridListComponent implements OnInit {
 
   grid = true;
-  products: any;
+  products: Product[];
   productForm: FormGroup;
-  filteredProducts: any;
   isLoading = false;
   error = null;
-  priceFilter = [
-    {
-      "order": "asc",
-      "displayText": "Price low to high"
-    },
-    {
-      "order": "desc",
-      "displayText": "Price high to low"
-    }]
+  priceFilter = PRICE_FILTER;
   constructor(private productService: ProductService, private fb: FormBuilder) {
     this.productForm = this.fb.group({
       filterProduct: []
@@ -37,7 +30,6 @@ export class GridListComponent implements OnInit {
       .subscribe(prod => {
         this.products = prod
         this.isLoading = false;
-        this.filteredProducts = this.products;
       }, error => {
         this.error = error;
         this.isLoading = false;

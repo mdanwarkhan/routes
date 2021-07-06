@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TimeLogger } from 'src/app/shared/models/time-logger.model';
 
 @Component({
   selector: 'app-countdown-timelog',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./countdown-timelog.component.css']
 })
 export class CountdownTimelogComponent implements OnInit {
-  @Input() startPauseClickTimerLogs: any;
+  @Input() startPauseClickTimerLogs: TimeLogger[];
   constructor() { }
 
   ngOnInit(): void {

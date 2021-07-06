@@ -9,6 +9,7 @@
         numbersOnly
         [(ngModel)]="timerInput"
         [disabled]="disableTimerInput"
+        #timer
       />
     </div>
 
@@ -24,7 +25,7 @@
       <button
         type="button"
         [ngClass]="timerInput == null ? 'button-disabled' : 'button-reset'"
-        (click)="resetTimer()"
+        (click)="resetTimer();timer.value = ''"
         [disabled]="timerInput == null"
       >
         Reset
