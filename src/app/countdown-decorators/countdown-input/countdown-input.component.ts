@@ -10,7 +10,7 @@ import { TimeLogger } from 'src/app/shared/models/time-logger.model';
 })
 export class CountdownInputComponent implements OnInit {
 
-  timerInput: number;
+  timerInput: null | number;
   disableTimerInput = false;
   countDownInterval: ReturnType<typeof setTimeout>;
   secondsLeftms: number;
@@ -39,7 +39,7 @@ export class CountdownInputComponent implements OnInit {
   toggleTimer() {
     this.disableTimerInput = true;
     if (this.start) {
-      let countDownTime: number = this.timerInput;
+      let countDownTime = this.timerInput as number;
       if (countDownTime > 0) {
 
         countDownTime = countDownTime * 1000;
@@ -103,7 +103,7 @@ export class CountdownInputComponent implements OnInit {
     this.disableTimerInput = false;
     this.start = true
     clearInterval(this.countDownInterval);
-    this.timerInput = 0;
+    this.timerInput = null;
     this.stopBtnClicked = true;
     this.timer.emit(this.timerTicker = 0)
     this.startPauseClickTimerLogs.emit(this.startPauseTimeArr = [])

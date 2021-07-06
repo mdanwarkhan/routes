@@ -9,7 +9,7 @@ import { CountdownSubjectService } from '../countdown-subject.service';
 })
 export class CountdownInputComponent {
 
-  timerInput: number;
+  timerInput: null | number;
   disableTimerInput = false;
   countDownInterval: ReturnType<typeof setTimeout>;
   secondsLeftms: number;
@@ -30,7 +30,7 @@ export class CountdownInputComponent {
   toggleTimer() {
     this.disableTimerInput = true;
     if (this.start) {
-      let countDownTime = this.timerInput;
+      let countDownTime = this.timerInput as number;
       if (countDownTime > 0) {
 
         countDownTime = countDownTime * 1000;
@@ -95,7 +95,7 @@ export class CountdownInputComponent {
     this.disableTimerInput = false;
     this.start = true
     clearInterval(this.countDownInterval);
-    this.timerInput = 0;
+    this.timerInput = null;
     this.stopBtnClicked = true;
     this.countdownSubjectService.sendTimerTicker(this.timerTicker = 0)
     this.countdownSubjectService.sendStartPauseClickTimerLogs(this.startPauseTimeArr = [])
