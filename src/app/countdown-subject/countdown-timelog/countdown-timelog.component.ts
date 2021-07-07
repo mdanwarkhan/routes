@@ -10,7 +10,7 @@ import { CountdownSubjectService } from '../countdown-subject.service';
 })
 export class CountdownTimelogComponent implements OnInit {
 
-  startPauseClickTimerLogs$: Observable<any>;
+  startPauseClickTimerLogs$: Observable<TimeLogger[]>;
 
   constructor(private countdownSubjectService: CountdownSubjectService) { }
 

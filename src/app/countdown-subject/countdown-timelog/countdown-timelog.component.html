@@ -1,4 +1,4 @@
-<ng-container *ngIf="(startPauseClickTimerLogs$ | async)?.length > 0 ;else noLogsAvailable">
+<ng-container *ngIf="startPauseClickTimerLogs$ ;else noLogsAvailable">
     <ul> 
         <ng-container *ngFor="let startPauseClickTimerLog of startPauseClickTimerLogs$ | async">
             <li *ngIf="startPauseClickTimerLog?.started">Started at: {{startPauseClickTimerLog.started | date: 'd-M-yyyy, h:mm:ss a'}}</li>

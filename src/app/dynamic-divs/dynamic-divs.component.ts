@@ -1,11 +1,11 @@
-import { Component, HostListener, OnInit, Renderer2, ElementRef, ViewChild, AfterViewInit  } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2, ElementRef, ViewChild, AfterViewInit, OnDestroy  } from '@angular/core';
 
 @Component({
   selector: 'app-dynamic-divs',
   templateUrl: './dynamic-divs.component.html',
   styleUrls: ['./dynamic-divs.component.css']
 })
-export class DynamicDivsComponent implements AfterViewInit {
+export class DynamicDivsComponent implements AfterViewInit, OnDestroy {
 
   currentDivNo = 0;
   parentDiv: HTMLDivElement;
@@ -43,5 +43,11 @@ export class DynamicDivsComponent implements AfterViewInit {
     this.renderer.appendChild(btn, text);
     this.renderer.appendChild(childDiv, btn);
     this.renderer.appendChild(this.parentDiv, childDiv);
+  }
+
+  ngOnDestroy() {
+    Array.from(this.parentDiv.children).forEach( child => {
+      this.renderer.removeChild(this.parentDiv, child);
+    })
   }
 }
